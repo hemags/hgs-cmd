@@ -12,11 +12,13 @@ case $1 in
       git add $2
       git commit -m "${3}"
       git push origin "${4}"
+  ;;
   help)
       echo "Options \t Description"
       echo "-ga \t  This option adds the specified directory or file before commit. Eg: hgs -ga . or hgs -ga <file or dir>"
       echo "-gc \t  This option adds and commits the code. Eg: hgs -ga . 'comments for commit'"
       echo "-gph \t This option adds, commits and pushes the code to git repo Eg: hgs -gph . 'comments for commit' <branch name>"
+  ;;
   *)
       echo "Incorrect Syntax"
   ;;
