@@ -1,3 +1,11 @@
 #!/bin/bash
 
-ls -lrt
+case $1 in
+  -print) echo "${2}"
+  ;;
+  -p) echo "${2}"
+  ;;
+  *)
+  echo "Incorrect Syntax"
+  ;;
+esac
