@@ -14,10 +14,12 @@ case $1 in
       git push origin "${4}"
   ;;
   help)
-      echo -e "Options \t Description"
-      echo -e "-ga \t  This option adds the specified directory or file before commit. Eg: hgs -ga . or hgs -ga <file or dir>"
-      echo -e "-gc \t  This option adds and commits the code. Eg: hgs -ga . 'comments for commit'"
-      echo -e "-gph \t This option adds, commits and pushes the code to git repo Eg: hgs -gph . 'comments for commit' <branch name>"
+      echo -e "\n  Options   \t Description"
+      echo -e "  =======   \t ======================================================================================================="
+      echo -e "  hgs -ga   \t This option adds the specified directory or file before commit. Eg: hgs -ga . or hgs -ga <file or dir>"
+      echo -e "  hgs -gc   \t This option adds and commits the code. Eg: hgs -ga . 'comments for commit'"
+      echo -e "  hgs -gph  \t This option adds, commits and pushes the code to git repo Eg: hgs -gph . 'comments for commit' <branch name>"
+      echo -e ""
   ;;
   *)
       echo "Incorrect Syntax"
