@@ -22,6 +22,7 @@ case $1 in
       echo -e ""
   ;;
   *)
-      echo "Incorrect Syntax"
+      echo "Error: Incorrect Syntax"
+      echo "Expected: Use 'hgs help' to view the options"
   ;;
 esac
