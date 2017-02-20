@@ -1,20 +1,46 @@
 #!/bin/bash
 
+checkGitAuth() {
+  if [[ $(git config user.email) ]]
+  then
+    echo 1
+  else
+    echo "Email Not Found"
+    echo "Please set your email id using the below format:"
+    echo "================================================"
+    echo "git config --global user.email 'you@example.com'"
+    echo "git config --global user.name 'Your Name'"
+  fi
+}
+
+
 case $1 in
   -gi)
       git init
   ;;
   -ga)
-      git add $2
+      checkval=$( checkGitAuth )
+      if [ $checkval == 1 ]
+      then
+        git add $2
+      fi
   ;;
   -gc)
-      git add $2
-      git commit -m "${3}"
+      checkval=$( checkGitAuth )
+      if [ $checkval == 1 ]
+      then
+        git add $2
+        git commit -m "${3}"
+      fi
   ;;
   -gph)
-      git add $2
-      git commit -m "${3}"
-      git push origin "${4}"
+      checkval=$( checkGitAuth )
+      if [ $checkval == 1 ]
+      then
+        git add $2
+        git commit -m "${3}"
+        git push origin "${4}"
+      fi
   ;;
   -apc)
       if [$2]; then
@@ -42,6 +68,5 @@ case $1 in
   *)
       echo " ${1}: unrecognized option"
       echo " Use 'hgs help'"
-
   ;;
 esac
