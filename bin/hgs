@@ -55,6 +55,7 @@ case $1 in
       else
         echo "${1}: has no value"
         echo " Use 'hgs help' for details"
+      fi
   ;;
   help)
       echo -e "\n  Options   \t Description"
