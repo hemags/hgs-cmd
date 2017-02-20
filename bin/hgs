@@ -1,6 +1,9 @@
 #!/bin/bash
 
 case $1 in
+  -gi)
+      git init
+  ;;
   -ga)
       git add $2
   ;;
@@ -13,15 +16,32 @@ case $1 in
       git commit -m "${3}"
       git push origin "${4}"
   ;;
+  -apc)
+      if [$2]; then
+        mkdir -p $2
+        cd $2
+        # inventory and master playbook
+        touch production staging site.yml
+        # folders
+        mkdir -p group_vars host_vars library filter_plugins
+        mkdir -p roles/common/{tasks,handlers,templates,files,vars,defaults,meta}
+        touch roles/common/{tasks,handlers,templates,files,vars,defaults,meta}/main.yml
+      else
+        echo "${1}: has no value"
+        echo " Use 'hgs help' for details"
+  ;;
   help)
       echo -e "\n  Options   \t Description"
       echo -e "  =======   \t ======================================================================================================="
       echo -e "  hgs -ga   \t This option adds the specified directory or file before commit. Eg: hgs -ga . or hgs -ga <file or dir>"
       echo -e "  hgs -gc   \t This option adds and commits the code. Eg: hgs -ga . 'comments for commit'"
       echo -e "  hgs -gph  \t This option adds, commits and pushes the code to git repo Eg: hgs -gph . 'comments for commit' <branch name>"
+      echo -e "  hgs -apc  \t This option creates ansible playbook directory structure Eg: hgs -apc httpd"
       echo -e ""
   ;;
   *)
-      echo "Incorrect Syntax"
+      echo " ${1}: unrecognized option"
+      echo " Use 'hgs help'"
+
   ;;
 esac
