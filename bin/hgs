@@ -43,7 +43,10 @@ case $1 in
       fi
   ;;
   -apc)
-      if [$2]; then
+      if [ -z "$2" ]; then
+        echo "${1}: has no value"
+        echo " Use 'hgs help' for details"
+      else
         mkdir -p $2
         cd $2
         # inventory and master playbook
@@ -52,9 +55,6 @@ case $1 in
         mkdir -p group_vars host_vars library filter_plugins
         mkdir -p roles/common/{tasks,handlers,templates,files,vars,defaults,meta}
         touch roles/common/{tasks,handlers,templates,files,vars,defaults,meta}/main.yml
-      else
-        echo "${1}: has no value"
-        echo " Use 'hgs help' for details"
       fi
   ;;
   help)
